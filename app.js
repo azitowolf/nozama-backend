@@ -11,17 +11,36 @@ var Catalog = require('./lib/catalog.js')
 
 var util = require('util');
 
-
+//Routes for Catalog
 app.get('/catalog', function(req, res) {
   Catalog.find({}, function(error, itemList) {
     res.json(itemList);
   });
 });
 
+app.get('/catalog/:id', function(req, res) {
+  Catalog.find({
+    _id: req.params.id
+  }, function(error, item) {
+    res.json(item);
+  });
+});
 
 
+//Routes for Users
+app.get('/users', function(req, res) {
+  User.find({}, function(error, userList) {
+    res.json(userList);
+  });
+});
 
-
+app.get('/users/:id', function(req, res) {
+  User.find({
+    _id: req.params.id
+  }, function(error, user) {
+    res.json(user);
+  });
+});
 
 
 

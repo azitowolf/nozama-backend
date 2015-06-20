@@ -9,7 +9,7 @@ var removeItems = function(done) {
       Catalog.remove({}, done);
     };
 
-var createItem1 = function(done) {
+var createItemOne = function(done) {
   Catalog.create({
   itemName: 'Muji gel pen, blue',
   description: 'The famous Japanese brand never fails to deliver. The Muji gel pen is the perfect companion to your most precious notes.',
@@ -18,9 +18,19 @@ var createItem1 = function(done) {
   }, done);
 };
 
+var createItemTwo = function(done) {
+  Catalog.create({
+  itemName: 'Muji gel pen, pink',
+  description: 'The famous Japanese brand never fails to deliver. The Muji gel pen is the perfect companion to your most precious notes.',
+  price: 2000,
+  photoURL: 'http://ecx.images-amazon.com/images/I/71nUYIE-BiL._SL1500_.jpg'
+  }, done);
+};
+
 async.series([
     removeItems,
-    createItem1
+    createItemOne,
+    createItemTwo
   ],
   function(error) {
     if (error) {
