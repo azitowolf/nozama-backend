@@ -6,19 +6,27 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var app = express();
 
+var jade = require('jade');
+var fs = require('fs');
+
+app.set('view engine', 'jade');
+app.set('views', './templates');
+
 var User = require('./lib/users.js');
 var Catalog = require('./lib/catalog.js')
 
 var util = require('util');
 
+var apiRouter = express.Router();
+
 //Routes for Catalog
-app.get('/catalog', function(req, res) {
+apiRouter.get('/catalog', function(req, res) {
   Catalog.find({}, function(error, itemList) {
     res.json(itemList);
   });
 });
 
-app.get('/catalog/:id', function(req, res) {
+apiRouter.get('/catalog/:id', function(req, res) {
   Catalog.find({
     _id: req.params.id
   }, function(error, item) {
@@ -28,13 +36,13 @@ app.get('/catalog/:id', function(req, res) {
 
 
 //Routes for Users
-app.get('/users', function(req, res) {
+apiRouter.get('/users', function(req, res) {
   User.find({}, function(error, userList) {
     res.json(userList);
   });
 });
 
-app.get('/users/:id', function(req, res) {
+apiRouter.get('/users/:id', function(req, res) {
   User.find({
     _id: req.params.id
   }, function(error, user) {
@@ -42,8 +50,24 @@ app.get('/users/:id', function(req, res) {
   });
 });
 
+// Temporary route for root
+app.get('/', function(req, res) {
+  res.render( 'index', {name: "Nozama", message: 'Welcome to Nozama Online Shop.'});
+});
 
+app.get('/catalog', function(req, res) {
+  Catalog.find({}, function(error, itemList) {
+    res.render( 'catalog', {catalog: itemList});
+  });
+});
 
+app.get('/catalog/:id', function(req, res) {
+  Catalog.find({ _id: req.params.id}, function(error, item) {
+    res.render('item', {catalog: item});
+  });
+});
+
+app.use('/api/v1', apiRouter);
 
 var server = app.listen(3000, function() {
 

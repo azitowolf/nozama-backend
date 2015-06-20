@@ -1,0 +1,9 @@
+extend layout
+block main
+  .catalog
+    for item in catalog
+      img(src= item.photoURL)
+      h3 #{item.itemName}
+      p #{item.description}
+      h4 price: $ #{item.price}
+      button add to cart
