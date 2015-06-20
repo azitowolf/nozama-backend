@@ -12,6 +12,13 @@ var Catalog = require('./lib/catalog.js')
 var util = require('util');
 
 
+app.get('/catalog', function(req, res) {
+  Catalog.find({}, function(error, itemList) {
+    res.json(itemList);
+  });
+});
+
+
 
 
 
