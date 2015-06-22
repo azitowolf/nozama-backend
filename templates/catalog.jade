@@ -2,8 +2,9 @@ extend layout
 block main
   h2 Our Catalog
   .catalog
-    for item in catalog
-      img(src= item.photoURL)
-      h3 #{item.itemName}
+    each item in catalog
+      img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
+      a(href='/catalog/#{item._id}') #{item.itemName}
+        hr
 
 
