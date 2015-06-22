@@ -1,10 +1,12 @@
 extend layout
 block main
   h2 Our Catalog
-  .catalog
-    each item in catalog
-      img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
-      a(href='/catalog/#{item._id}') #{item.itemName}
-        hr
+  .row
+    .catalog
+      each item in catalog
+        img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
+        .row
+        a(href='/catalog/#{item._id}') #{item.itemName}
+          hr
 
 

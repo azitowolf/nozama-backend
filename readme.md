@@ -18,4 +18,4 @@
 
 * **Colophon**
 
-- This app was developed by Valeria Graffeo, Amy Goldberg, Peter White and Alex Zit-Wolf as third project assignment in the Web Develoment Immersive Course at General Assembly Boston in June 2015.
+- This app was developed by Valeria Graffeo, Amy Goldberg, Peter White and Alex Zito-Wolf as third project assignment in the Web Develoment Immersive Course at General Assembly Boston in June 2015.
