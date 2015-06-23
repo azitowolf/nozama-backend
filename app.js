@@ -13,21 +13,21 @@ app.set('view engine', 'jade');
 app.set('views', './templates');
 
 var User = require('./lib/users.js');
-var Catalog = require('./lib/catalog.js')
+var Item = require('./lib/items.js')
 
 var util = require('util');
 
 var apiRouter = express.Router();
 
 //Routes for Catalog
-apiRouter.get('/catalog', function(req, res) {
-  Catalog.find({}, function(error, itemList) {
+apiRouter.get('/items', function(req, res) {
+  Item.find({}, function(error, itemList) {
     res.json(itemList);
   });
 });
 
-apiRouter.get('/catalog/:id', function(req, res) {
-  Catalog.find({
+apiRouter.get('/items/:id', function(req, res) {
+  Item.find({
     _id: req.params.id
   }, function(error, item) {
     res.json(item);
@@ -55,15 +55,15 @@ app.get('/', function(req, res) {
   res.render( 'index', {name: "Nozama", message: 'Welcome to Nozama Online Shop.'});
 });
 
-app.get('/catalog', function(req, res) {
-  Catalog.find({}, function(error, itemList) {
-    res.render( 'catalog', {catalog: itemList});
+app.get('/items', function(req, res) {
+  Item.find({}, function(error, itemList) {
+    res.render( 'items', {items: itemList});
   });
 });
 
-app.get('/catalog/:id', function(req, res) {
-  Catalog.find({ _id: req.params.id}, function(error, item) {
-    res.render('item', {catalog: item});
+app.get('/items/:id', function(req, res) {
+  Item.find({ _id: req.params.id}, function(error, item) {
+    res.render('item', {item: item});
   });
 });
 
