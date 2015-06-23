@@ -1,7 +1,7 @@
 extend layout
 block main
-  .catalog
-    each item in catalog
+  .items
+    each item in items
       img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
       h3 #{item.itemName}
       p #{item.description}

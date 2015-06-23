@@ -1,0 +1,12 @@
+extend layout
+block main
+  h2 Our Catalog
+  .row
+    .items
+      each item in items
+        img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
+        .row
+        a(href='/items/#{item._id}') #{item.itemName}
+          hr
+
+
