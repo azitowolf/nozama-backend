@@ -63,7 +63,7 @@ app.get('/items', function(req, res) {
 
 app.get('/items/:id', function(req, res) {
   Item.find({ _id: req.params.id}, function(error, item) {
-    res.render('item', {item: item});
+    res.render('item', {items: item});
   });
 });
 

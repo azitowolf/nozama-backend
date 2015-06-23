@@ -2,11 +2,11 @@ extend layout
 block main
   h2 Our Catalog
   .row
-    .catalog
-      each item in catalog
+    .items
+      each item in items
         img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
         .row
-        a(href='/catalog/#{item._id}') #{item.itemName}
+        a(href='/items/#{item._id}') #{item.itemName}
           hr
 
 

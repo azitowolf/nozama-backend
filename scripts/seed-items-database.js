@@ -2,15 +2,15 @@ var async = require('async');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nozama');
 
-var Catalog = require('../lib/catalog.js');
+var Item = require('../lib/items.js');
 
 
 var removeItems = function(done) {
-      Catalog.remove({}, done);
+      Item.remove({}, done);
     };
 
 var createItemOne = function(done) {
-  Catalog.create({
+  Item.create({
   itemName: 'Muji gel pen, blue',
   description: 'The famous Japanese brand never fails to deliver. The Muji gel pen is the perfect companion to your most precious notes.',
   price: 2,
@@ -19,8 +19,17 @@ var createItemOne = function(done) {
 };
 
 var createItemTwo = function(done) {
-  Catalog.create({
+  Item.create({
   itemName: 'Muji gel pen, pink',
+  description: 'The famous Japanese brand never fails to deliver. The Muji gel pen is the perfect companion to your most precious notes.',
+  price: 2,
+  photoURL: 'http://i.imgur.com/uprItZN.jpg'
+  }, done);
+};
+
+var createItemThree = function(done) {
+  Item.create({
+  itemName: 'Muji gel pen, red',
   description: 'The famous Japanese brand never fails to deliver. The Muji gel pen is the perfect companion to your most precious notes.',
   price: 2,
   photoURL: 'http://i.imgur.com/uprItZN.jpg'
@@ -30,7 +39,8 @@ var createItemTwo = function(done) {
 async.series([
     removeItems,
     createItemOne,
-    createItemTwo
+    createItemTwo,
+    createItemThree
   ],
   function(error) {
     if (error) {
