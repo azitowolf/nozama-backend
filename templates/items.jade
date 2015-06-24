@@ -1,12 +1,14 @@
 extend layout
 block main
-  h2 Our Catalog
-  .row
-    .items
-      each item in items
-        img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
+  .container.maincontent
+    .row
+      .col-lg-12
+        h1.page-header Our Catalog
         .row
-        a(href='/items/#{item._id}') #{item.itemName}
-          hr
+        .items.col-md-3.img-portfolio
+            each item in items
+              img(class=['img-responsive', 'img-hover'] src='#{item.photoURL}')
+              a(href='/items/#{item._id}') #{item.itemName}
+              p #{item.description}
 
 

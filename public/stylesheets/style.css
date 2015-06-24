@@ -23,3 +23,11 @@ body {
 .maincontent {
   padding-top: 40px;
 }
+.img-portfolio {
+  margin-bottom: 30px;
+}
+.img-hover:hover {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}

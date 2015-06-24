@@ -68,7 +68,8 @@ apiRouter.get('/users/:id', function(req, res) {
 
 // Temporary route for root
 app.get('/', function(req, res) {
-  res.render( 'index', {name: "Nozama", message: 'Welcome to Nozama Online Shop.'});
+  Item.find({}, function(error, itemList) {
+    res.render( 'items', {items: itemList});
 });
 
 app.get('/items', function(req, res) {
