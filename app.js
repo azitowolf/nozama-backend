@@ -65,22 +65,69 @@ apiRouter.get('/users/:id', function(req, res) {
   });
 });
 
-// Routes for client side
+apiRouter.post('/users', jsonParser);
+apiRouter.post('/users', function(req, res) {
+  User.create(req.body, function(error, user) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
+
+apiRouter.patch('/contacts/:id', jsonParser);
+apiRouter.patch('/contacts/:id', function(req, res) {
+  User.findByIdAndUpdate(req.params.id, {
+    $set: req.body
+  }, function(error, user) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+apiRouter.delete('/contacts/:id', function(req, res) {
+  User.remove({
+    _id: req.params.id
+  }, function(error) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(204);
+    }
+  });
+});
+
+
+// Temporary route for root
 app.get('/', function(req, res) {
-  Item.find({}, function(error, itemList) {
-    res.render( 'items', {items: itemList});
-    });
+  res.render('index', {
+    name: "Nozama",
+    message: 'Welcome to Nozama Online Shop.'
+  });
 });
 
 app.get('/items', function(req, res) {
   Item.find({}, function(error, itemList) {
-    res.render( 'items', {items: itemList});
+    res.render('items', {
+      items: itemList
+    });
   });
 });
 
 app.get('/items/:id', function(req, res) {
-  Item.find({ _id: req.params.id}, function(error, item) {
-    res.render('item', {items: item});
+  Item.find({
+    _id: req.params.id
+  }, function(error, item) {
+    res.render('item', {
+      items: item
+    });
   });
 });
 
