@@ -2,15 +2,15 @@ var async = require('async');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nozama');
 
-var Catalog = require('../lib/catalog.js');
+var Item = require('../lib/items.js');
 
 
 var removeItems = function(done) {
-  Catalog.remove({}, done);
+  Item.remove({}, done);
 };
 
 var createItemOne = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Nutiva Chia Seeds',
     description: 'Nutiva Chia seeds are sourced from organic farms and are some of the freshest chia seeds available on the market.',
     price: 1199,
@@ -20,7 +20,7 @@ var createItemOne = function(done) {
 };
 
 var createItemTwo = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Peace Lily',
     description: 'The famous Japanese Peace Lily has the unique power to create a serene and organic atmosphere in any home. Our peace lilies are grown outside and never treated with pesticides.',
     price: 2199,
@@ -30,7 +30,7 @@ var createItemTwo = function(done) {
 };
 
 var createItemThree = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Agarwood Essential Oil',
     description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
     price: 2999,
@@ -38,17 +38,9 @@ var createItemThree = function(done) {
     tags: ['plants', 'flowering']
   }, done);
 };
-var createItemThree = function(done) {
-  Catalog.create({
-    itemName: 'Agarwood Essential Oil',
-    description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
-    price: 2999,
-    photoURL: 'http://www.raisethevibration.org/uploads/2/4/2/9/24293158/2793008.jpg',
-    tags: ['oils', 'organic']
-  }, done);
-};
+
 var createItemFour = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Bamboo Face Mask',
     description: 'Bamboo face mask will help you rejuvinate your body and soul, with its cleansing, moisturizing power',
     price: 999,
@@ -56,8 +48,9 @@ var createItemFour = function(done) {
     tags: ['face', 'beauty']
   }, done);
 };
+
 var createItemFive = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Aloe face mask by Cala',
     description: 'The aloe plant is used as a moisturizing component in many skin products. For the maximum moisture in the shortest time, go with this face mask above all others',
     price: 999,
@@ -66,7 +59,7 @@ var createItemFive = function(done) {
   }, done);
 };
 var createItemSix = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'CloudBerries, 1/2 quart',
     description: 'Couldberries have become known for their incredible antioxidant powers. These sweet organic treats are the caviar of the berry department.',
     price: 2999,
@@ -75,7 +68,7 @@ var createItemSix = function(done) {
   }, done);
 };
 var createItemSeven = function(done) {
-  Catalog.create({
+  Item.create({
     itemName: 'Succulents from NaturalImpact',
     description: 'Succulent plants have become a mainstay for the modern homeownre. Improve your rooms aesthetic with little effort with a colorful succulent from NaturalImpact',
     price: 999,
@@ -83,24 +76,15 @@ var createItemSeven = function(done) {
     tags: ['plants', 'cactus']
   }, done);
 };
-var createItemThree = function(done) {
-  Catalog.create({
-    itemName: 'Agarwood Essential Oil',
-    description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
-    price: 2999,
-    photoURL: 'http://www.raisethevibration.org/uploads/2/4/2/9/24293158/2793008.jpg',
-    tags: ['plants', 'flowering']
-  }, done);
-};
-var createItemThree = function(done) {
-  Catalog.create({
-    itemName: 'Agarwood Essential Oil',
-    description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
-    price: 2999,
-    photoURL: 'http://www.raisethevibration.org/uploads/2/4/2/9/24293158/2793008.jpg',
-    tags: ['plants', 'flowering']
-  }, done);
-};
+// var createItemThree = function(done) {
+//   Item.create({
+//     itemName: 'Agarwood Essential Oil',
+//     description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
+//     price: 2999,
+//     photoURL: 'http://www.raisethevibration.org/uploads/2/4/2/9/24293158/2793008.jpg',
+//     tags: ['plants', 'flowering']
+//   }, done);
+// };
 
 async.series([
     removeItems,
