@@ -1,3 +1,4 @@
+var util = require('util');
 var async = require('async');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nozama');
@@ -54,14 +55,14 @@ var createUserThree = function(done) {
     lastName: 'Quackenbush',
     phoneNumber: '845-555-6186',
     address: [{
-      addressType: 'billing'
+      addressType: 'billing',
       street: '13 Rocklyn Drive',
       city: 'Suffern',
       state: 'NY',
       zipCode: '10901',
       country: 'USA'
     }, {
-      addressType: 'mailing'
+      addressType: 'mailing',
       street: '13 Rocklyn Drive',
       city: 'Suffern',
       state: 'NY',
@@ -76,7 +77,7 @@ async.series([
     removeUsers,
     createUserOne,
     createUserTwo,
-    createUserThree
+    createUserThree,
   ],
   function(error) {
     if (error) {

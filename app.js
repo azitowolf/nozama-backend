@@ -77,11 +77,13 @@ apiRouter.post('/users', function(req, res) {
   });
 });
 
-apiRouter.patch('/contacts/:id', jsonParser);
-apiRouter.patch('/contacts/:id', function(req, res) {
+apiRouter.patch('/users/:id', jsonParser);
+apiRouter.patch('/users/:id', function(req, res) {
+  console.log(req);
   User.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, function(error, user) {
+    console.log(user);
     if (error) {
       console.log(error);
       res.sendStatus(400);
@@ -91,7 +93,7 @@ apiRouter.patch('/contacts/:id', function(req, res) {
   });
 });
 
-apiRouter.delete('/contacts/:id', function(req, res) {
+apiRouter.delete('/users/:id', function(req, res) {
   User.remove({
     _id: req.params.id
   }, function(error) {
