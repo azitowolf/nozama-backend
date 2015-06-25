@@ -4,10 +4,14 @@ block main
     .row
       .col-lg-12
         h1.page-header Our Catalog
-        .row.items.col-md-3.img-portfolio
+        .row
+          .items
             each item in items
-              img(class=['img-responsive', 'img-hover'] src='#{item.photoURL}')
-              a(href='/items/#{item._id}') #{item.itemName}
-              p #{item.description}
+              .col-md-3.item-container
+                img(class=['img-responsive', 'img-hover', 'thumbnail'] src='#{item.photoURL}')
+                .caption
+                  a(href='/items/#{item._id}') #{item.itemName}
+                  p #{item.description}
+
 
 
