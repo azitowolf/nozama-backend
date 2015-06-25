@@ -18,7 +18,7 @@ app.set('view engine', 'jade');
 app.set('views', './templates');
 
 var User = require('./lib/users.js');
-var Item = require('./lib/items.js')
+var Item = require('./lib/items.js');
 
 var util = require('util');
 
@@ -118,6 +118,10 @@ app.get('/items/:id', function(req, res) {
   Item.find({ _id: req.params.id}, function(error, item) {
     res.render('item', {items: item});
   });
+});
+
+app.get('/checkout', function(req, res) {
+  res.render( 'checkout');
 });
 
 app.use('/api/v1', apiRouter);
