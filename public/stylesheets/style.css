@@ -1,4 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto");
 html {
   position: relative;
   min-height: 100%;
@@ -28,6 +27,4 @@ body {
 }
 .img-hover:hover {
   opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
 }

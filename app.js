@@ -11,12 +11,16 @@ var app = express();
 var jade = require('jade');
 var fs = require('fs');
 var stylus = require('stylus');
-var nib = require('nib');
 var apiRouter = express.Router();
 var User = require('./lib/users.js');
 var Item = require('./lib/items.js');
 var util = require('util');
 
+
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+};
 
 // // view engine setup
 app.set('views', path.join(__dirname, 'templates'));
@@ -50,7 +54,6 @@ apiRouter.get('/items/:id', function(req, res) {
 apiRouter.get('/users', function(req, res) {
   User.find({}, function(error, userList) {
     res.json(userList);
-    res.status(200);
   });
 });
 
@@ -66,6 +69,7 @@ apiRouter.get('/users/:id', function(req, res) {
 app.get('/', function(req, res) {
   Item.find({}, function(error, itemList) {
     res.render( 'items', {items: itemList});
+    });
 });
 
 app.get('/items', function(req, res) {
@@ -82,11 +86,11 @@ app.get('/items/:id', function(req, res) {
 
 app.use('/api/v1', apiRouter);
 
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib());
-};
+// function compile(str, path) {
+//   return stylus(str)
+//     .set('filename', path)
+//     .use(nib());
+// };
 
 app.use(stylus.middleware({ src: __dirname + '/public', compile: compile }));
 app.use(express.static(__dirname + '/public'));
