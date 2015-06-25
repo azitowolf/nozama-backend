@@ -1,16 +1,18 @@
-.form
+extend layout
+block main
+  .form
   h1 Update my account
   form(name="update-user")
       p First Name:
-      input(type="text", name="firstName")
+      input(type="text", name="firstName", value=user.firstName)
       p Last Name:
-      input(type="text", name="lastName")
+      input(type="text", name="lastName", value=user.lastName)
       p Phone Number:
-      input(type="text", name="phoneNumber")
+      input(type="text", name="phoneNumber", value=user.phoneNumber)
       p Email Address:
-      input(type="text", name="emailAddress")
-      p Address:
-      input(type="text", name="address")
+      input(type="text", name="emailAddress", value=user.emailAddress)
+      //- p Address:
+      //- input(type="text", name="address")
       p Password:
       input(type="text", name="password")
       input(type="submit", value="update my account")
