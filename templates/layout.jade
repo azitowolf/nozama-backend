@@ -14,23 +14,9 @@ html
     script(src='scripts/ajax-create-user.js')
     script(src='scripts/ajax-update-user.js')
   body
-    // Fixed navbar
     .navbar.navbar-default.navbar-fixed-top(role='navigation')
-      .container
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          img.navbrand-brand(alt="Nozama" src="/assets/logo2.png")
-        .navbar-collapse.collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='#') Login
-            li
-              a(href='#') Search
-        // /.nav-collapse
+    .container
+      include navbar.jade
     .container
       block main
 

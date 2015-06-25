@@ -1,0 +1,23 @@
+.navbar.navbar-default.navbar-fixed-top(role='navigation')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      img.navbrand-brand(alt="Nozama" src="/assets/logo2.png")
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='#') Login
+        li
+          a(href='#') Search
+      //- if (user)
+      //-   li You are logged in as #{user.username}
+      //-     a(href="/auth/logout")  logout
+      //- else
+      //-   li
+      //-     a(href="/auth/login") Please login
+      //-     |  or
+      //-     a(href="/auth/register")  register

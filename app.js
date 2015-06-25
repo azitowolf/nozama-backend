@@ -15,6 +15,10 @@ var apiRouter = express.Router();
 var User = require('./lib/users.js');
 var Item = require('./lib/items.js');
 var util = require('util');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var auth = require('./routes/auth');
 
 
 function compile(str, path) {
@@ -30,9 +34,26 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+    secret: 'nozama',
+    resave: true,
+    saveUninitialized: false
+}));
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Passport configuration
+app.use(passport.initialize());
+app.use(passport.session());
+
+var Account = require('./lib/account');
+passport.use(Account.createStrategy());
+
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+app.use('/auth/', auth);
 
 //Routes for Items
 apiRouter.get('/items', function(req, res) {
