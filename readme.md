@@ -5,7 +5,7 @@
 * **Nozama version 1.0 6/19/15 by group McCarthy.**
 
 - This is the README file for the back end of the single page aplication "Nozama e-commerce" visible at: http://www..
-- The goal of the app is
+- The goal of the app is to create an e-commerce website where users can purchase items through Stripe
 - The API, the resourse feeding the data, is hosted on HEROKU at this address: https://
 
 * **Overview and Example usage**
@@ -19,7 +19,6 @@
 * **Colophon**
 
 - This app was developed by Valeria Graffeo, Amy Goldberg, Peter White and Alex Zito-Wolf as third project assignment in the Web Develoment Immersive Course at General Assembly Boston in June 2015.
-
 
 ##User Stories
 
@@ -40,4 +39,3 @@
 - checkout has a recap of the items user wants to order, shipping address, shipping cost, tax, and total that will be charged to the credit card.
 - users enters card and pays. He will receive an email notification with the order confirmation/invoice, order number, items.
 - will the email have a format that we can build with jade template??? Also enclose an email/phone number for customer support about the order.
-

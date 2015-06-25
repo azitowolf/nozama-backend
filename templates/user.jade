@@ -1,0 +1,23 @@
+
+h3 Name: #{firstName} #{lastName}
+
+if (emailAddresses.length > 0)
+  h4 Email Addresses:
+
+  for email in emailAddresses
+    p #{email.emailAddress}
+if (phoneNumbers.length > 0)
+  h4 Phone Numbers:
+
+  for phone in phoneNumbers
+    p #{phone.phoneNumber}
+if (addresses.length > 0)
+  h4 Addresses:
+
+  for address in addresses
+    p #{addressType}:
+    p #{address.street} #{address.secondStreet},
+    p #{address.city}, #{address.state}, #{address.zipCode}
+    p #{address.country}
+
+  //- need to add fields for: password, creditCardToken, currentCart
