@@ -76,15 +76,15 @@ var createItemSeven = function(done) {
     tags: ['plants', 'cactus']
   }, done);
 };
-// var createItemThree = function(done) {
-//   Item.create({
-//     itemName: 'Agarwood Essential Oil',
-//     description: 'Agarwood, also known as "oud" or "ouhd", is known for its distinctive oaky, rich, dark aroma.  ',
-//     price: 2999,
-//     photoURL: 'http://www.raisethevibration.org/uploads/2/4/2/9/24293158/2793008.jpg',
-//     tags: ['plants', 'flowering']
-//   }, done);
-// };
+var createItemEight = function(done) {
+  Item.create({
+    itemName: 'Epic Bison Bacon Cranberry bar',
+    description: 'The Bison Bacon bar delivers a substantial serving of our two most favorite meats; 100% grass fed and organic buffalo brilliantly combined with humanely certified uncured bacon.',
+    price: 1999,
+    photoURL: 'https://epicbar.com/images/rotation/BisonBar.png',
+    tags: ['plants', 'flowering']
+  }, done);
+};
 
 async.series([
     removeItems,
@@ -94,7 +94,8 @@ async.series([
     createItemFour,
     createItemFive,
     createItemSix,
-    createItemSeven
+    createItemSeven,
+    createItemEight
   ],
   function(error) {
     if (error) {
