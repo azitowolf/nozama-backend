@@ -1,10 +1,17 @@
 extend layout
 block main
-  .items
-    each item in items
-      img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}' width='400px')
-      h3 #{item.itemName}
-      p #{item.description}
-      h4 price: $ #{item.price}
-      button add to
-        span(class='glyphicon glyphicon-shopping-cart')
+  .container.maincontent
+    .row
+      .col-lg-12
+        .row
+          .items
+            each item in items
+              img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}' width='400px')
+              h3 #{item.itemName}
+              p #{item.description}
+              h4 price: $ #{item.price}
+              .btn-group
+                button.btn.btn-default add to
+                  span(class='glyphicon glyphicon-shopping-cart')
+                a.btn.btn-default(href='/items/') back to catalog
+
