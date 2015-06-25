@@ -133,6 +133,15 @@ app.get('/items/:id', function(req, res) {
   });
 });
 
+// connecting with jade users template ?
+app.get('/users', function(req, res) {
+  User.find({}, function(error, userList) {
+    res.render('users', {
+      users: userList
+    });
+  });
+});
+
 app.use('/api/v1', apiRouter);
 
 // function compile(str, path) {
@@ -141,7 +150,10 @@ app.use('/api/v1', apiRouter);
 //     .use(nib());
 // };
 
-app.use(stylus.middleware({ src: __dirname + '/public', compile: compile }));
+app.use(stylus.middleware({
+  src: __dirname + '/public',
+  compile: compile
+}));
 app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(3000, function() {
