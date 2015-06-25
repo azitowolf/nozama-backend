@@ -50,6 +50,43 @@ apiRouter.get('/items/:id', function(req, res) {
   });
 });
 
+apiRouter.post('/items', jsonParser);
+apiRouter.post('/items', function(req, res) {
+  Item.create(req.body, function(error, item) {
+    console.log(req.body);
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
+
+apiRouter.patch('/items/:id', jsonParser);
+apiRouter.patch('/items/:id', function(req, res){
+  Item.findByIdAndUpdate(req.params.id, req.body, {overwrite: false}, function(error, item){
+    if(error){
+      console.error(error);
+      res.sendStatus(400);
+    }
+    console.log('Changed')
+    res.sendStatus(200);
+  });
+});
+
+apiRouter.delete('/items/:id', function(req, res) {
+  Item.remove({
+    _id: req.params.id
+  }, function(error) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(204);
+    }
+  });
+});
 
 //Routes for Users
 apiRouter.get('/users', function(req, res) {

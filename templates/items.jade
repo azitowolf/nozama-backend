@@ -4,7 +4,7 @@ block main
   .row
     .items
       each item in items
-        img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}')
+        img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}' width='200px')
         .row
         a(href='/items/#{item._id}') #{item.itemName}
           hr
