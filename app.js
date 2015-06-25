@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nozama');
-
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var express = require('express');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
@@ -9,7 +12,7 @@ var jade = require('jade');
 var fs = require('fs');
 var stylus = require('stylus');
 var nib = require('nib');
-
+var apiRouter = express.Router();
 
 app.set('view engine', 'jade');
 app.set('views', './templates');
@@ -19,7 +22,18 @@ var Item = require('./lib/items.js')
 
 var util = require('util');
 
-var apiRouter = express.Router();
+// // view engine setup
+app.set('views', path.join(__dirname, 'templates'));
+app.set('view engine', 'jade');
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 //Routes for Catalog
 apiRouter.get('/items', function(req, res) {

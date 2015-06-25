@@ -5,14 +5,27 @@
   "main": "app.js",
   "scripts": {
     "test": "grunt jasmine-nodejs"
-  },
+    },
+  "engines": {
+    "node": "0.10.x",
   "author": "McCarthy group",
-  "license": "MIT",
+  "license": "MIT"
+  },
   "dependencies": {
     "async": "^1.2.1",
     "body-parser": "^1.13.1",
     "express": "^4.12.4",
-    "mongoose": "^4.0.5"
+    "mongoose": "^4.0.5",
+    "cookie-parser": "~1.3.3",
+    "jade": "^1.11.0",
+    "passport": "0.2.*",
+    "nib": "^1.1.0",
+    "stylus": "^0.51.1",
+    "debug": "~2.0.0",
+    "express-session": "^1.9.1",
+    "serve-favicon": "~2.1.3",
+    "morgan": "~1.3.0",
+    "method-override": "^2.3.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -28,12 +41,19 @@
     "grunt-nodemon": "^0.4.0",
     "grunt-open": "^0.2.3",
     "grunt-plato": "^1.2.1",
-    "jade": "^1.11.0",
     "load-grunt-config": "^0.17.1",
     "mongodb": "^2.0.34",
-    "nib": "^1.1.0",
-    "stylus": "^0.51.1",
     "time-grunt": "^1.2.1"
   },
-  "homepage": "https://github.com/tuskerette/nozama-backend/blob/master/readme.md"
+  "homepage": "https://github.com/tuskerette/nozama-backend/blob/master/readme.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuskerette/nozama-backend.git"
+  },
+  "keywords": [
+    "ecommerce"
+  ],
+  "bugs": {
+    "url": "https://github.com/tuskerette/nozama-backend/issues"
+  }
 }
