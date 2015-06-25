@@ -1,11 +1,12 @@
 
 h3 My Account
-    p #{firstName} #{lastName}
-    p #{email.emailAddress}
-    p #{phone.phoneNumber}
-    p #{addressType}:
-    p #{address.street} #{address.secondStreet},
-    p #{address.city}, #{address.state}, #{address.zipCode}
-    p #{address.country}
+    p #{user.firstName} #{user.lastName}
+    p #{user.emailAddress}
+    p #{user.phoneNumber}
+    for address in user.address
+      p #{address.addressType}:
+      p #{address.street} #{address.secondStreet},
+      p #{address.city}, #{address.state}, #{address.zipCode}
+      p #{address.country}
 
   //- need to add fields for: password, creditCardToken, currentCart

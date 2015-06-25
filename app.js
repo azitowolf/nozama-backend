@@ -142,6 +142,34 @@ app.get('/users', function(req, res) {
   });
 });
 
+app.get('/users/:id', function(req, res) {
+  User.findById(req.params.id, function(error, user) {
+    res.render('user', {
+      user: user
+    });
+  });
+});
+
+app.post('/users', jsonParser);
+app.post('/users', function(req, res) {
+  User.create(req.body, function(error, user) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      fs.readFile('./templates/users.jade', 'utf8', function(err, data) {
+        if (err) {
+          res.sendStatus(400);
+        };
+        var userCompiler = jade.compile(data);
+        var html = userCompiler(user);
+        res.send(html);
+        res.status(201);
+      });
+    };
+  });
+});
+
 app.use('/api/v1', apiRouter);
 
 // function compile(str, path) {
