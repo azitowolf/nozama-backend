@@ -1,7 +1,13 @@
   $(document).ready(function() {
+    $('form[name="update-user"]').hide();
+    $('#edit-user-details').on('click', function(event) {
+      $('form[name="update-user"]').toggle();
+      $('.user').toggle();
+    });
+
     $('form[name="update-user"]').on('submit', function(event) {
-      debugger;
       event.preventDefault();
+      var id = $('.user').data('user')
       var user = {
         firstName: $('input[name="firstName"]').val(),
         lastName: $('input[name="lastName"]').val(),
@@ -10,13 +16,14 @@
         ddress: $('input[name="address"]').val(),
         password: $('input[name="password"]').val()
       };
+      debugger
       $.ajax({
         method: 'PATCH',
-        url: 'http://localhost:3000/api/v1/users/:id',
+        url: 'http://localhost:3000/users/api/' + id,
         data: JSON.stringify(user),
         contentType: "application/json; charset=utf-8"
       }).done(function(response) {
-        $('.users').append(response);
+        location.reload();
       })
     });
   });

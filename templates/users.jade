@@ -1,17 +1,26 @@
 extend layout
 block main
   h1 Users
-  .users
-  for user in users
-    h3 Accout Details:
-    p #{user.firstName} #{user.lastName}
-    p #{user.emailAddress}
-    p #{user.phoneNumber}
-    for address in user.address
-      p #{address.addressType}:
-      p #{address.street} #{address.secondStreet},
-      p #{address.city}, #{address.state}, #{address.zipCode}
-      p #{address.country}
+  form(name="users-details")
+    .container.maincontent
+      .row
+        .col-lg-12
+          .row
+            .users
+              for user in users
+                h4 My Account:
+                p Name: #{user.firstName} #{user.lastName}
+                p Email Address: #{user.emailAddress}
+                p Phone Number: #{user.phoneNumber}
+                for address in user.address
+                  p Address Types
+                  p #{address.addressType}:
+                  p Street: #{address.street} #{address.secondStreet}
+                  p City, State, Zipcode: #{address.city}, #{address.state} #{address.zipCode}
+                  p Country: #{address.country}
+                .btn-group
+                button.btn.btn-default Edit Account Details
+                  span(id="edit-user-details")
 
 //- include contact-form.jade
 

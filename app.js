@@ -43,8 +43,6 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Passport configuration
@@ -63,7 +61,8 @@ app.use('/items', itemsRouter);
 app.use('/users', usersRouter);
 app.use('/', itemsRouter);
 
-
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 function compile(str, path) {
@@ -76,7 +75,6 @@ app.use(stylus.middleware({
   src: __dirname + '/public',
   compile: compile
 }));
-app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(3000, function() {
 
