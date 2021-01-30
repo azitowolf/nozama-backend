@@ -39,3 +39,12 @@
 - checkout has a recap of the items user wants to order, shipping address, shipping cost, tax, and total that will be charged to the credit card.
 - users enters card and pays. He will receive an email notification with the order confirmation/invoice, order number, items.
 - will the email have a format that we can build with jade template??? Also enclose an email/phone number for customer support about the order.
+
+todo: 
+
+1. rebuild grunt file 
+2. seed new db (mongodbatlas)  
+
+ https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6
+ https://www.digitalocean.com/community/tutorials/nodejs-crud-operations-mongoose-mongodb-atlas
+

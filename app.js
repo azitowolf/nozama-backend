@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -16,11 +15,42 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
+var config = require('dotenv').config();
 
 //Setup
 var app = express();
 var jsonParser = bodyParser.json();
-mongoose.connect('mongodb://localhost/nozama');
+
+// const faunadb = require('faunadb');
+// const client = new faunadb.Client({ secret: 'fnAEAdQyRsACBI7dAzfv8y8Apbpo8fTnfNThnQtk'})
+
+// console.log(client);
+
+// `const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://admin:<password>@cluster0.xigeo.mongodb.net/<dbname>?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: false });
+// client.connect(err => {
+//   const collection = client.db("nozama").collection("items");
+//   // perform actions on the collection object
+//   console.log(collection)
+//   client.close();
+// });`
+
+//Import the mongoose module
+var mongoose = require('mongoose');
+
+//Set up default mongoose connection
+var mongoDB = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.xigeo.mongodb.net/nozama?retryWrites=true&w=majority`;
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+  if(err) return err;
+  console.log('connected to instance')
+});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 function compile(str, path) {
   return stylus(str)
@@ -66,8 +96,6 @@ app.use('/', itemsRouter);
 
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 var server = app.listen(3000, function() {
 

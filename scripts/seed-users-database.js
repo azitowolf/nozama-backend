@@ -1,9 +1,20 @@
 var util = require('util');
 var async = require('async');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/nozama');
-
 var User = require('../lib/users.js');
+
+//Set up default mongoose connection
+var mongoDB = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.xigeo.mongodb.net/nozama?retryWrites=true&w=majority`;
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+  if(err) return err;
+  console.log('connected to instance');
+});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var removeUsers = function(done) {
   User.remove({}, done);
@@ -83,6 +94,6 @@ async.series([
     if (error) {
       console.error(error);
     }
-    mongoose.disconnect();
+    db.close();
   }
 );
