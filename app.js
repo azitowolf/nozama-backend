@@ -97,7 +97,7 @@ app.use('/', itemsRouter);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-var server = app.listen(3000, function() {
+var server = app.listen(8080, function() {
 
   var host = server.address().address;
   var port = server.address().port;

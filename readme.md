@@ -1,5 +1,15 @@
 # README
 
+## Development
+
+1. clone
+2. npm install
+3. create file '.env' in roo dir
+4. add Mongo DB User and password to .env file (https://www.npmjs.com/package/dotenv)
+5. run 'npm start'
+
+## 
+
 ## Contents
 
 * **Nozama version 1.0 6/19/15 by group McCarthy.**
